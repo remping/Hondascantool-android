@@ -1,0 +1,27 @@
+name: Restore Gradle Wrapper
+
+on:
+  workflow_dispatch:
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Run Gradle Wrapper
+        run: gradle wrapper --gradle-version 8.4
+
+      - name: Commit wrapper files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add gradle/wrapper/gradle-wrapper.jar
+          git add gradle/wrapper/gradle-wrapper.properties
+          git add gradlew
+          git add gradlew.bat
+          git commit -m "Restore gradle wrapper"
+          git push
