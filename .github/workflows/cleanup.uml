@@ -1,0 +1,24 @@
+name: Cleanup wrapper
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove broken wrapper
+        run: |
+          rm -rf gradle/wrapper
+          rm -f gradlew
+          rm -f gradlew.bat
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Remove broken gradle wrapper"
+          git push
