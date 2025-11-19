@@ -24,4 +24,4 @@ jobs:
           git add gradlew
           git add gradlew.bat
           git commit -m "Restore gradle wrapper"
-          git push
+          git push 
