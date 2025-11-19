@@ -1,12 +1,7 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.1'
-    }
+plugins {
+    // tidak perlu apa apa di sini untuk project root
 }
+
 allprojects {
     repositories {
         google()
